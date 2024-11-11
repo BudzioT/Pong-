@@ -1,0 +1,77 @@
+[gd_scene load_steps=9 format=3 uid="uid://b3ckv8shptk4u"]
+
+[ext_resource type="Texture2D" uid="uid://bon3mjtajalnc" path="res://assets/arts/ScoreBar.png" id="1_d3e2q"]
+[ext_resource type="Script" path="res://scenes/score_bar.gd" id="1_euo4t"]
+[ext_resource type="FontFile" uid="uid://di11nl5kthfq0" path="res://assets/fonts/Noto_Sans,Teko/Teko/static/Teko-Bold.ttf" id="2_1avih"]
+[ext_resource type="FontFile" uid="uid://s2t0dn05pmq8" path="res://assets/fonts/Noto_Sans,Teko/Teko/static/Teko-Light.ttf" id="3_rnwvi"]
+
+[sub_resource type="Gradient" id="Gradient_lm8cm"]
+offsets = PackedFloat32Array(0.921739, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_x0wie"]
+gradient = SubResource("Gradient_lm8cm")
+
+[sub_resource type="LabelSettings" id="LabelSettings_7kgi3"]
+font = ExtResource("2_1avih")
+font_size = 26
+
+[sub_resource type="LabelSettings" id="LabelSettings_futnf"]
+font = ExtResource("3_rnwvi")
+font_size = 40
+font_color = Color(0, 0, 0, 1)
+outline_size = 2
+outline_color = Color(0.780392, 0.0313726, 1, 1)
+
+[node name="ScoreBar" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_euo4t")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(500, 16)
+scale = Vector2(7.56867, 1)
+texture = SubResource("GradientTexture2D_x0wie")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(256, 24)
+scale = Vector2(1.5, 1)
+texture = ExtResource("1_d3e2q")
+
+[node name="Sprite2" type="Sprite2D" parent="."]
+position = Vector2(896, 24)
+scale = Vector2(1.50141, 1.02142)
+texture = ExtResource("1_d3e2q")
+flip_h = true
+
+[node name="TimeContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 48.0
+
+[node name="TimeLabel" type="Label" parent="TimeContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "00:00"
+label_settings = SubResource("LabelSettings_7kgi3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScoreContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 310.0
+offset_right = 842.0
+offset_bottom = 48.0
+
+[node name="Label" type="Label" parent="ScoreContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+text = "0"
+label_settings = SubResource("LabelSettings_futnf")
+
+[node name="Label2" type="Label" parent="ScoreContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "0"
+label_settings = SubResource("LabelSettings_futnf")
+horizontal_alignment = 2
+vertical_alignment = 1

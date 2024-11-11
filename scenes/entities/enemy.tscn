@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dnqkly3e14oj4"]
+
+[ext_resource type="Texture2D" uid="uid://chdq3efo0at7p" path="res://assets/arts/Computer.png" id="1_biblt"]
+[ext_resource type="Script" path="res://scenes/entities/enemy.gd" id="1_ran3f"]
+
+[node name="Computer" type="CharacterBody2D"]
+collision_mask = 6
+script = ExtResource("1_ran3f")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_biblt")
+
+[node name="CollisionShape" type="CollisionPolygon2D" parent="."]
+rotation = 3.14159
+polygon = PackedVector2Array(-9, 60, -2, 60, 4, 56, 9, 50, 9, -50, 4, -56, -2, -60, -9, -60)

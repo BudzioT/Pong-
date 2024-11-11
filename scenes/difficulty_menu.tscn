@@ -1,0 +1,83 @@
+[gd_scene load_steps=7 format=3 uid="uid://dvx1kydelwuwo"]
+
+[ext_resource type="Script" path="res://scenes/difficulty_menu.gd" id="1_hmq2a"]
+[ext_resource type="FontFile" uid="uid://di11nl5kthfq0" path="res://assets/fonts/Noto_Sans,Teko/Teko/static/Teko-Bold.ttf" id="1_wrtsb"]
+[ext_resource type="FontFile" uid="uid://brvho8272kavv" path="res://assets/fonts/Noto_Sans,Teko/Noto_Sans/static/NotoSans-ExtraBold.ttf" id="2_7nudm"]
+
+[sub_resource type="Gradient" id="Gradient_48how"]
+colors = PackedColorArray(0.506046, 0.35841, 0.385504, 1, 0.08314, 0.000113998, 0.210809, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_sgs4g"]
+gradient = SubResource("Gradient_48how")
+
+[sub_resource type="LabelSettings" id="LabelSettings_sutgw"]
+font = ExtResource("1_wrtsb")
+font_size = 91
+
+[node name="DifficultyMenu" type="TextureRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_sgs4g")
+script = ExtResource("1_hmq2a")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 100
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Difficulty level"
+label_settings = SubResource("LabelSettings_sutgw")
+horizontal_alignment = 1
+
+[node name="Control3" type="Control" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="EasyButton" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("2_7nudm")
+theme_override_font_sizes/font_size = 22
+text = "Easy"
+
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MediumButton" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("2_7nudm")
+theme_override_font_sizes/font_size = 22
+text = "Medium"
+
+[node name="Control2" type="Control" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HardButton" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("2_7nudm")
+theme_override_font_sizes/font_size = 22
+text = "Hard"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/EasyButton" to="." method="_on_easy_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/MediumButton" to="." method="_on_medium_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HardButton" to="." method="_on_hard_button_pressed"]

@@ -1,0 +1,47 @@
+[gd_scene load_steps=9 format=3 uid="uid://dqoa5ggwsnu34"]
+
+[ext_resource type="Texture2D" uid="uid://cnbiq4qj01ppj" path="res://assets/arts/Board.png" id="1_ejohx"]
+[ext_resource type="Script" path="res://scenes/map.gd" id="1_y66a3"]
+[ext_resource type="PackedScene" uid="uid://cx63fhh182dcx" path="res://scenes/entities/player.tscn" id="2_acuj7"]
+[ext_resource type="PackedScene" uid="uid://dnqkly3e14oj4" path="res://scenes/entities/enemy.tscn" id="3_3tous"]
+[ext_resource type="PackedScene" uid="uid://dqi3gvvrc0r21" path="res://scenes/objects/wall.tscn" id="4_43oua"]
+[ext_resource type="PackedScene" uid="uid://cqd66mbvmdkn0" path="res://scenes/objects/death_zone.tscn" id="5_mxuvl"]
+[ext_resource type="PackedScene" uid="uid://bsavx8ipu2dkn" path="res://scenes/objects/ball.tscn" id="6_bhtre"]
+[ext_resource type="PackedScene" uid="uid://b3ckv8shptk4u" path="res://scenes/score_bar.tscn" id="7_phbuj"]
+
+[node name="Map" type="Node2D"]
+script = ExtResource("1_y66a3")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(576, 324)
+scale = Vector2(1.43641, 1.42418)
+texture = ExtResource("1_ejohx")
+
+[node name="Areas" type="Node2D" parent="."]
+
+[node name="WallUp" parent="Areas" instance=ExtResource("4_43oua")]
+position = Vector2(576, 21)
+
+[node name="WallDown" parent="Areas" instance=ExtResource("4_43oua")]
+position = Vector2(576, 673)
+
+[node name="DeathZoneLeft" parent="Areas" instance=ExtResource("5_mxuvl")]
+position = Vector2(-25, 324)
+
+[node name="DeathZoneRight" parent="Areas" instance=ExtResource("5_mxuvl")]
+position = Vector2(1177, 324)
+
+[node name="Entities" type="Node2D" parent="."]
+
+[node name="Player" parent="Entities" groups=["Entities"] instance=ExtResource("2_acuj7")]
+position = Vector2(12, 312)
+scale = Vector2(1.43641, 1.42418)
+
+[node name="Computer" parent="Entities" groups=["Entities"] instance=ExtResource("3_3tous")]
+position = Vector2(1139, 309)
+scale = Vector2(1.43641, 1.42418)
+
+[node name="Ball" parent="Entities" instance=ExtResource("6_bhtre")]
+position = Vector2(576, 324)
+
+[node name="ScoreBar" parent="." instance=ExtResource("7_phbuj")]

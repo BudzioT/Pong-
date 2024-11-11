@@ -1,0 +1,81 @@
+[gd_scene load_steps=9 format=3 uid="uid://c21p6jbwt3ae"]
+
+[ext_resource type="Script" path="res://scenes/main_menu.gd" id="1_hmsjq"]
+[ext_resource type="FontFile" uid="uid://brvho8272kavv" path="res://assets/fonts/Noto_Sans,Teko/Noto_Sans/static/NotoSans-ExtraBold.ttf" id="2_dwueb"]
+[ext_resource type="FontFile" uid="uid://di11nl5kthfq0" path="res://assets/fonts/Noto_Sans,Teko/Teko/static/Teko-Bold.ttf" id="2_ekqu2"]
+
+[sub_resource type="Gradient" id="Gradient_48how"]
+colors = PackedColorArray(0.506046, 0.35841, 0.385504, 1, 0.08314, 0.000113998, 0.210809, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ye3qp"]
+gradient = SubResource("Gradient_48how")
+
+[sub_resource type="LabelSettings" id="LabelSettings_2qdlb"]
+font = ExtResource("2_ekqu2")
+font_size = 116
+shadow_size = 31
+shadow_color = Color(0.504898, 0.311156, 0.558564, 0.607843)
+
+[sub_resource type="Theme" id="Theme_fvafs"]
+default_font = ExtResource("2_dwueb")
+default_font_size = 22
+
+[sub_resource type="Theme" id="Theme_mxys4"]
+default_font = ExtResource("2_dwueb")
+default_font_size = 22
+
+[node name="MainMenu" type="TextureRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_ye3qp")
+script = ExtResource("1_hmsjq")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 100
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "PONG!"
+label_settings = SubResource("LabelSettings_2qdlb")
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 150
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="MultiButton" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = SubResource("Theme_fvafs")
+text = "Play with a friend"
+
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="SoloButton" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = SubResource("Theme_mxys4")
+text = "Play with AI"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/MultiButton" to="." method="_on_multi_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/SoloButton" to="." method="_on_solo_button_pressed"]

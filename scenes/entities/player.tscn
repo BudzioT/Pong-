@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cx63fhh182dcx"]
+
+[ext_resource type="Script" path="res://scripts/entities/player.gd" id="1_2b6pu"]
+[ext_resource type="Texture2D" uid="uid://bdp274do0tpje" path="res://assets/arts/Player.png" id="1_8bdom"]
+
+[node name="Player" type="CharacterBody2D"]
+collision_mask = 6
+script = ExtResource("1_2b6pu")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_8bdom")
+
+[node name="CollisionShape" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-9, 60, -2, 60, 4, 56, 9, 50, 9, -50, 4, -56, -2, -60, -9, -60)
