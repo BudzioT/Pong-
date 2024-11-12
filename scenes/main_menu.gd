@@ -1,5 +1,10 @@
 extends TextureRect
 
+func _ready() -> void:
+	Globals.winner = 0
+	Globals.pause = true
+	Globals.difficulty = 0
+	
 
 func _on_multi_button_pressed() -> void:
 	Globals.ai_mode = false

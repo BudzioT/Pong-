@@ -3,11 +3,13 @@ extends CharacterBody2D
 signal ai_movement
 
 @export var height: float = 120.0
-var speed = 250
+var speed: int = 250
+var stop_step: int = 0
 
 func _ready() -> void:
 	position.y = get_window().size.y / 2.0 + Globals.scorebar_height
 	Globals.connect("scored", Callable(self, "reset_pos"))
+	speed = 250
 	
 func _physics_process(_delta: float) -> void:
 	handleMovement()
@@ -31,19 +33,23 @@ func handleMovement():
 		
 
 func handle_ai_movement():
-	var ball_position = get_node("/Entities/Ball").position
 	if Globals.difficulty == 0:
-		ai_easy_movement(ball_position)
+		ai_easy_movement(Globals.ball_position)
 	elif Globals.difficulty == 1:
-		ai_medium_movement(ball_position)
+		ai_medium_movement(Globals.ball_position)
 	else:
-		ai_hard_movement(ball_position)
+		ai_hard_movement(Globals.ball_position)
 		
 func ai_easy_movement(ball_position: Vector2):
-	pass
+	if position.y != ball_position.y && stop_step % 2:
+		velocity.y += speed * sign(ball_position.y - position.y)
+	stop_step += 1
 	
 func ai_medium_movement(ball_position: Vector2):
-	pass
+	speed = 150
+	if position.y != ball_position.y:
+		velocity.y += speed * sign(ball_position.y - position.y)
 	
 func ai_hard_movement(ball_position: Vector2):
-	pass
+	if position.y != ball_position.y:
+		velocity.y += speed * sign(ball_position.y - position.y)

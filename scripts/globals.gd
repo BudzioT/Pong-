@@ -10,6 +10,9 @@ var pause_steps: int = 0
 var ai_mode: int = false
 var scorebar_height: int = 47
 var difficulty: int = 0
+var globals_winner: int = 0
+
+var ball_position: Vector2 = Vector2(0, 0)
 
 var p1_score: int = 0:
 	get:

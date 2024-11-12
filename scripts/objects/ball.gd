@@ -12,13 +12,14 @@ func _physics_process(delta: float) -> void:
 func handleMovement(delta: float) -> void:
 	movement = speed * motion.normalized() * delta
 	position += movement
+	Globals.ball_position = position
 
 func _on_area_entered(area: Area2D) -> void:
 	if area.name.contains("DeathZone"):
 		if movement.x < 0:
-			Globals.p1_score += 1
-		else:
 			Globals.p2_score += 1
+		else:
+			Globals.p1_score += 1
 		Globals.emit_signal("scored")
 		speed = 300
 		var size = get_window().size
