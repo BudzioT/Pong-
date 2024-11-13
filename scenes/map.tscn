@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dqoa5ggwsnu34"]
+[gd_scene load_steps=10 format=3 uid="uid://dqoa5ggwsnu34"]
 
 [ext_resource type="Texture2D" uid="uid://cnbiq4qj01ppj" path="res://assets/arts/Board.png" id="1_ejohx"]
 [ext_resource type="Script" path="res://scenes/map.gd" id="1_y66a3"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cqd66mbvmdkn0" path="res://scenes/objects/death_zone.tscn" id="5_mxuvl"]
 [ext_resource type="PackedScene" uid="uid://bsavx8ipu2dkn" path="res://scenes/objects/ball.tscn" id="6_bhtre"]
 [ext_resource type="PackedScene" uid="uid://b3ckv8shptk4u" path="res://scenes/score_bar.tscn" id="7_phbuj"]
+[ext_resource type="AudioStream" uid="uid://cylopc81kjuqy" path="res://assets/sounds/Sound (Music 1).mp3" id="9_kctr6"]
 
 [node name="Map" type="Node2D"]
 script = ExtResource("1_y66a3")
@@ -20,7 +21,7 @@ texture = ExtResource("1_ejohx")
 [node name="Areas" type="Node2D" parent="."]
 
 [node name="WallUp" parent="Areas" instance=ExtResource("4_43oua")]
-position = Vector2(576, 21)
+position = Vector2(576, 23)
 
 [node name="WallDown" parent="Areas" instance=ExtResource("4_43oua")]
 position = Vector2(576, 673)
@@ -45,3 +46,8 @@ scale = Vector2(1.43641, 1.42418)
 position = Vector2(576, 324)
 
 [node name="ScoreBar" parent="." instance=ExtResource("7_phbuj")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_kctr6")
+volume_db = -5.0
+autoplay = true

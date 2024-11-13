@@ -21,14 +21,17 @@ func _on_area_entered(area: Area2D) -> void:
 		else:
 			Globals.p1_score += 1
 		Globals.emit_signal("scored")
+		get_node("Sounds/ScoreSound").play()
 		speed = 300
-		var size = get_window().size
-		position = Vector2(size.x / 2, size.y / 2 + Globals.scorebar_height)
+		if get_window():
+			var size = get_window().size
+			position = Vector2(size.x / 2, size.y / 2 + Globals.scorebar_height)
 
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.name.contains("Wall"):
 		motion.y = -motion.y
+		get_node("Sounds/WallSound").play()
 	else:
 		motion.x = -motion.x
 		
@@ -39,3 +42,4 @@ func _on_body_entered(body: Node2D) -> void:
 		
 		motion.y = hit_factor * 0.8 + randf_range(-0.2, 0.2)
 		motion = motion.normalized()
+		get_node("Sounds/PaddleSound").play()

@@ -1,13 +1,12 @@
 extends CharacterBody2D
 
-signal ai_movement
-
 @export var height: float = 120.0
 var speed: int = 250
 var stop_step: int = 0
 
 func _ready() -> void:
-	position.y = get_window().size.y / 2.0 + Globals.scorebar_height
+	if get_window():
+		position.y = get_window().size.y / 2.0 + Globals.scorebar_height
 	Globals.connect("scored", Callable(self, "reset_pos"))
 	speed = 250
 	
@@ -16,7 +15,8 @@ func _physics_process(_delta: float) -> void:
 	move_and_slide()
 	
 func reset_pos() -> void:
-	position.y = get_window().size.y / 2.0 + Globals.scorebar_height
+	if (get_window()):
+		position.y = get_window().size.y / 2.0 + Globals.scorebar_height
 	
 func handleMovement():
 	var moveDirection = Input.get_vector("ui_left", "ui_right", "up2", "down2")

@@ -13,7 +13,8 @@ func _physics_process(_delta: float) -> void:
 	move_and_slide()
 	
 func reset_pos() -> void:
-	position.y = get_window().size.y / 2.0 + Globals.scorebar_height
+	if (get_window()):
+		position.y = get_window().size.y / 2.0 + Globals.scorebar_height
 	
 func handleInput():
 	var moveDirection = Input.get_vector("ui_left", "ui_right", "up1", "down1")

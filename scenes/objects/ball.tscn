@@ -1,8 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://bsavx8ipu2dkn"]
+[gd_scene load_steps=11 format=3 uid="uid://bsavx8ipu2dkn"]
 
 [ext_resource type="Script" path="res://scripts/objects/ball.gd" id="1_8aebu"]
 [ext_resource type="Texture2D" uid="uid://bgbfk51u562bp" path="res://assets/arts/Ball.png" id="1_apmch"]
 [ext_resource type="Texture2D" uid="uid://cpnqeinisi2pl" path="res://assets/arts/purple-circle.png" id="3_q3vx7"]
+[ext_resource type="AudioStream" uid="uid://cvgke57oflkv7" path="res://assets/sounds/paddle.mp3" id="4_k2abf"]
+[ext_resource type="AudioStream" uid="uid://dw7m5m1csg8nq" path="res://assets/sounds/wall.mp3" id="5_wydi5"]
+[ext_resource type="AudioStream" uid="uid://c5wko1qa0ewa7" path="res://assets/sounds/score.mp3" id="6_dcw4t"]
 
 [sub_resource type="Curve" id="Curve_i6b56"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.486364, 0.803774), 0.0, 0.0, 0, 0, Vector2(0.695454, 0.622642), 0.0, 0.0, 0, 0, Vector2(0.977273, 0.260377), 0.0, 0.0, 0, 0]
@@ -41,6 +44,23 @@ texture = ExtResource("1_apmch")
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_xg128")
+
+[node name="Sounds" type="Node2D" parent="."]
+
+[node name="PaddleSound" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource("4_k2abf")
+volume_db = -10.0
+area_mask = 2
+
+[node name="WallSound" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource("5_wydi5")
+volume_db = -10.0
+area_mask = 4
+
+[node name="ScoreSound" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource("6_dcw4t")
+volume_db = -7.0
+area_mask = 8
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
