@@ -15,6 +15,7 @@ Play it online on itch.io! Here: https://budziot.itch.io/pong
 - ![image](https://cloud-he9dtcpep-hack-club-bot.vercel.app/0image.png)
 
 <br>
+
 ## :video_game: Controls
 - Movement Player1: WASD
 - Movement Player2: Arrow keys
